@@ -3,6 +3,7 @@
 import { CartItem } from "@/components/cart-item";
 import { PhoneInput } from "@/components/phone-input";
 import styles from "./cart.module.scss";
+import { Button } from "@/components/button";
 
 type Props = {
   items: CartItem[];
@@ -22,8 +23,10 @@ export function Cart({ items }: Props) {
           ))}
         </ul>
         <form method="POST" action="/">
-          <PhoneInput value="test" onChange={(value) => console.log(value)} />
-          <button type="submit">Заказать</button>
+          <div className={styles.cartForm}>
+            <PhoneInput value="test" onChange={(value) => console.log(value)} />
+            <Button type="submit">Заказать</Button>
+          </div>
         </form>
       </div>
     </section>

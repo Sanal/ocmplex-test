@@ -28,6 +28,11 @@ a {
   text-decoration: none;
 }
 
+button {
+  all: unset;
+  cursor: pointer;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
