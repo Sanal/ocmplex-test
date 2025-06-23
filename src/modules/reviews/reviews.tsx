@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { ReviewCard } from "@/components/review-card";
 
 async function fetchReviews(): Promise<Review[]> {
@@ -9,7 +10,7 @@ async function fetchReviews(): Promise<Review[]> {
   return res.json();
 }
 
-export async function Reviews() {
+async function ReviewsSection() {
   const reviews = await fetchReviews();
 
   return (
@@ -23,5 +24,17 @@ export async function Reviews() {
         ))}
       </ul>
     </section>
+  );
+}
+
+function ReviewsFallback() {
+  return <p>Загрузка отзывов…</p>;
+}
+
+export function Reviews() {
+  return (
+    <Suspense fallback={<ReviewsFallback />}>
+      <ReviewsSection />
+    </Suspense>
   );
 }

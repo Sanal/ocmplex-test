@@ -1,17 +1,10 @@
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import { ReviewsFallback } from "@/modules/reviews";
-import { Suspense } from "react";
-
-const Reviews = dynamic(() => import("@/modules/reviews"), { ssr: true });
+import Reviews from "@/modules/reviews";
 
 export default function Home() {
   return (
     <main>
       <h1>Магазин</h1>
-      <Suspense fallback={<ReviewsFallback />}>
-        <Reviews />
-      </Suspense>
+      <Reviews />
 
       <section>
         <h2>Корзина</h2>
@@ -34,31 +27,6 @@ export default function Home() {
             <button type="submit">Заказать</button>
           </form>
         </div>
-      </section>
-
-      <section>
-        <h2>Список товаров</h2>
-        <ul>
-          <li>
-            <div>
-              <Image
-                src="https://placehold.co/400x600"
-                alt="Placeholder"
-                width={400}
-                height={600}
-              />
-              <h3>название</h3>
-              <p>
-                Описание описание описание описание описание. ауццау, описание
-                fe описание. fefe.
-              </p>
-              <p>
-                <span>цена: 1215₽</span>
-              </p>
-              <button type="button">Купить</button>
-            </div>
-          </li>
-        </ul>
       </section>
     </main>
   );
