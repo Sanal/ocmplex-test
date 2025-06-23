@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  font-size: 0.8rem;
+  background-color: #d9d9d9;
+  border-radius: 1rem;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    margin-bottom: 0.25em;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin: 0;
+
+    :not(:last-child) {
+      margin-bottom: 0.25em;
+    }
+  }
+}

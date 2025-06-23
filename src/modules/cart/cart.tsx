@@ -1,3 +1,5 @@
+"use client";
+
 import { CartItem } from "@/components/cart-item";
 import { PhoneInput } from "@/components/phone-input";
 
@@ -8,7 +10,7 @@ type Props = {
 export function Cart({ items }: Props) {
   return (
     <section>
-      <h2>Корзина</h2>
+      <h2 className="visually-hidden">Корзина</h2>
       <div>
         <b>Добавленные товары</b>
         <ul>

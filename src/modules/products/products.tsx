@@ -13,7 +13,7 @@ export function Products({ initialItems }: Props) {
 
   return (
     <section>
-      <h2>Список товаров</h2>
+      <h2 className="visually-hidden">Список товаров</h2>
       <ul className={styles.productsGrid}>
         {products.map((product) => (
           <li key={product.id}>
