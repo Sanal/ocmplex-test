@@ -42,5 +42,5 @@ export default function useLoader(initialItems: Product[]) {
     return () => observer.disconnect();
   }, [loadMore]);
 
-  return { loaderRef, loading, products };
+  return { loaderRef, loading, ended, products };
 }

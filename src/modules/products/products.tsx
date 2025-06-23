@@ -9,21 +9,31 @@ type Props = {
 };
 
 export function Products({ initialItems }: Props) {
-  const { loaderRef, loading, products } = useLoader(initialItems);
+  const { loaderRef, loading, ended, products } = useLoader(initialItems);
 
   return (
-    <section>
+    <section className={styles.sectionContainer}>
       <h2 className="visually-hidden">Список товаров</h2>
-      <ul className={styles.productsGrid}>
+      <ul className={styles.container}>
         {products.map((product) => (
           <li key={product.id}>
             <ProductCard product={product} />
           </li>
         ))}
       </ul>
-      <div ref={loaderRef} style={{ height: "40px" }}>
-        {loading && <p>Загрузка…</p>}
+      <div ref={loaderRef} className={styles.loaderContainer}>
+        {loading && (
+          <>
+            <span className="visually-hidden">Загрузка…</span>
+            <div className={styles.loader} />
+          </>
+        )}
       </div>
+      {ended && (
+        <div className={styles.endOfList}>
+          <span>Конец списка</span>
+        </div>
+      )}
     </section>
   );
 }

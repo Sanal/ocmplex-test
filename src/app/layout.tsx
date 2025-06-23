@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Geologica } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
 
 const sans = Inter({
   variable: "--font-sans",
+  subsets: ["latin", "cyrillic"],
+});
+
+const titleFont = Geologica({
+  variable: "--font-title",
   subsets: ["latin", "cyrillic"],
 });
 
@@ -23,7 +28,9 @@ export default function RootLayout({
       <Head>
         <meta />
       </Head>
-      <body className={`${sans.variable}`}>{children}</body>
+      <body className={`${sans.variable} ${titleFont.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
