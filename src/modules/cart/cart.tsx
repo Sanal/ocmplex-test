@@ -1,15 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { CartItem } from "@/components/cart-item";
 import { PhoneInput } from "@/components/phone-input";
-import styles from "./cart.module.scss";
 import { Button } from "@/components/button";
+import styles from "./cart.module.scss";
 
 type Props = {
   items: CartItem[];
 };
 
 export function Cart({ items }: Props) {
+  const [phone, setPhone] = useState("");
+
   return (
     <section className={styles.sectionContainer}>
       <h2 className="visually-hidden">Корзина</h2>
@@ -24,11 +27,7 @@ export function Cart({ items }: Props) {
         </ul>
         <form method="POST" action="/">
           <div className={styles.cartForm}>
-            <PhoneInput
-              value="test"
-              name="phone"
-              onChange={(value) => console.log(value)}
-            />
+            <PhoneInput value={phone} name="phone" onChange={setPhone} />
             <Button type="submit">Заказать</Button>
           </div>
         </form>
