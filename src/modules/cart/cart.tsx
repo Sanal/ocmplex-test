@@ -24,7 +24,11 @@ export function Cart({ items }: Props) {
         </ul>
         <form method="POST" action="/">
           <div className={styles.cartForm}>
-            <PhoneInput value="test" onChange={(value) => console.log(value)} />
+            <PhoneInput
+              value="test"
+              name="phone"
+              onChange={(value) => console.log(value)}
+            />
             <Button type="submit">Заказать</Button>
           </div>
         </form>
