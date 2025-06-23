@@ -15,9 +15,9 @@ async function ReviewsSection() {
   const reviews = await fetchReviews();
 
   return (
-    <section className={styles.container}>
+    <section className={styles.sectionContainer}>
       <h2 className="visually-hidden">Отзывы</h2>
-      <ul className={styles.reviewsGrid}>
+      <ul className={styles.container}>
         {reviews.map((review) => (
           <li key={review.id}>
             <ReviewCard content={review.text} />
