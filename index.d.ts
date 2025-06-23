@@ -6,6 +6,13 @@ type Product = {
   price: number;
 };
 
+type ProductsResponse = {
+  page: number;
+  amount: number;
+  total: number;
+  items: Product[];
+};
+
 type Review = {
   id: number;
   text: string;

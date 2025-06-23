@@ -1,10 +1,12 @@
 import Reviews from "@/modules/reviews";
+import Products from "@/modules/products";
 
 export default function Home() {
   return (
     <main>
       <h1>Магазин</h1>
       <Reviews />
+      <Products />
 
       <section>
         <h2>Корзина</h2>
