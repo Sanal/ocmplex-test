@@ -1,3 +1,5 @@
+import styles from "./cart-item.module.scss";
+
 type Props = {
   item: CartItem;
 };
@@ -5,7 +7,7 @@ type Props = {
 export function CartItem({ item }: Props) {
   const { title, quantity, getPrice } = item;
   return (
-    <div>
+    <div className={styles.container}>
       <span>{title}</span>
       <span>x{quantity}</span>
       <span>{getPrice()}₽</span>

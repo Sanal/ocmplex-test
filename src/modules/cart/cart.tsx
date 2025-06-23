@@ -2,6 +2,7 @@
 
 import { CartItem } from "@/components/cart-item";
 import { PhoneInput } from "@/components/phone-input";
+import styles from "./cart.module.scss";
 
 type Props = {
   items: CartItem[];
@@ -9,10 +10,10 @@ type Props = {
 
 export function Cart({ items }: Props) {
   return (
-    <section>
+    <section className={styles.sectionContainer}>
       <h2 className="visually-hidden">Корзина</h2>
-      <div>
-        <b>Добавленные товары</b>
+      <div className={styles.container}>
+        <h3 className={styles.title}>Добавленные товары</h3>
         <ul>
           {items.map((item) => (
             <li key={item.id}>
