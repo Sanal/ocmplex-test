@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 2rem;
+  min-height: 3rem;
   padding: 0.5rem 1rem;
   color: #f0f0f0;
   font-size: 0.8rem;
@@ -12,4 +12,10 @@
   text-transform: uppercase;
   background-color: #222222;
   border-radius: 0.5rem;
+  box-sizing: border-box;
+
+  &:disabled {
+    background-color: #444444;
+    cursor: not-allowed;
+  }
 }

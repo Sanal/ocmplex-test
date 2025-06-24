@@ -1,18 +1,25 @@
 import Image from "next/image";
 import styles from "./product-card.module.scss";
 import { Button } from "@/components/button";
+import { formatCurrency } from "@/utils";
 
 type Props = {
   product: Product;
+  quantity?: number;
+  add: (product: Product) => void;
+  increment: (id: CartItem["id"]) => void;
+  decrement: (id: CartItem["id"]) => void;
 };
 
-export function ProductCard({ product }: Props) {
-  const { image_url, title, description, price } = product;
-  const formattedPrice = price.toLocaleString("ru-RU", {
-    style: "currency",
-    currency: "rub",
-    maximumFractionDigits: Number.isInteger(price) ? 0 : 2,
-  });
+export function ProductCard({
+  product,
+  quantity,
+  add,
+  increment,
+  decrement,
+}: Props) {
+  const { image_url, title, description, price, id } = product;
+  const formattedPrice = formatCurrency(price);
 
   return (
     <div className={styles.container}>
@@ -27,7 +34,21 @@ export function ProductCard({ product }: Props) {
         <p className={styles.priceTag}>
           <b>Цена:</b> {formattedPrice}
         </p>
-        <Button type="button">Купить</Button>
+        {!quantity ? (
+          <Button type="button" onClick={() => add(product)}>
+            Купить
+          </Button>
+        ) : (
+          <div className={styles.counterContainer}>
+            <Button type="button" onClick={() => decrement(id)}>
+              -
+            </Button>
+            <span className={styles.quantity}>{quantity}</span>
+            <Button type="button" onClick={() => increment(id)}>
+              +
+            </Button>
+          </div>
+        )}
       </footer>
     </div>
   );

@@ -1,25 +1,39 @@
-import { InputMask } from "@react-input/mask";
+"use client";
+
+import { useState } from "react";
+import { Controller, Control, FieldValues, Path } from "react-hook-form";
+import { IMaskInput } from "react-imask";
 import styles from "./phone-input.module.scss";
 
-type Props = {
-  name: string;
-  value: string;
-  onChange: (value: string) => void;
+type Props<T extends FieldValues> = {
+  control: Control<T>;
+  name: Path<T>;
 };
 
-export function PhoneInput({ value, name, onChange }: Props) {
+export function PhoneInput<T extends FieldValues>({ control, name }: Props<T>) {
+  const [maskedValue, setMaskedValue] = useState("");
+
   return (
-    <InputMask
-      type="tel"
-      name={name}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      autoComplete="off"
-      inputMode="numeric"
-      mask="+7 (___) ___-__-__"
-      replacement={{ _: /\d/ }}
-      showMask
-      className={styles.input}
-    />
+    <div className={styles.container}>
+      <Controller
+        name={name}
+        control={control}
+        render={({ field }) => (
+          <IMaskInput
+            {...field}
+            mask="+7 (000) 000-00-00"
+            placeholder="+7 (___) ___-__-__"
+            unmask={false}
+            onAccept={(value, maskRef) => {
+              setMaskedValue(value);
+              field.onChange("7" + maskRef.unmaskedValue);
+            }}
+            onChange={() => undefined}
+            value={maskedValue}
+            className={styles.input}
+          />
+        )}
+      />
+    </div>
   );
 }

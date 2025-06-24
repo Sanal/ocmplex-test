@@ -15,16 +15,6 @@
 
 .title {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 700;
   text-align: center;
-}
-
-.cartForm {
-  display: grid;
-  gap: 0.5rem;
-
-  @media (min-width: 1024px) {
-    grid-template-columns: 210px 1fr;
-    gap: 1rem;
-  }
 }

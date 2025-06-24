@@ -1,11 +1,11 @@
-import { PAGE_SIZE } from "@/constants";
+import { PAGE_SIZE, PRODUCTS_URL } from "@/constants";
 import { Products } from "./products";
 
 async function fetchInitial(): Promise<ProductsResponse> {
-  const res = await fetch(
-    `http://o-complex.com:1337/products?page=1&page_size=${PAGE_SIZE}`,
-    { cache: "no-store" }
-  );
+  const page = (1).toString();
+  const page_size = PAGE_SIZE.toString();
+  const params = new URLSearchParams({ page, page_size }).toString();
+  const res = await fetch(`${PRODUCTS_URL}?${params}`, { cache: "no-store" });
   return res.json();
 }
 

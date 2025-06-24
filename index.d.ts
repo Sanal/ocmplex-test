@@ -19,8 +19,8 @@ type Review = {
 };
 
 type OrderItem = {
-  id: number;
-  quantity: number;
+  id: Product["id"];
+  quantity: CartItem["quantity"];
 };
 
 type OrderData = {
@@ -33,17 +33,18 @@ type OrderResponse = {
   error?: string;
 };
 
-interface Cart {
+interface CartStore {
   items: CartItem[];
-  add: (product: Product) => void;
-  remove: (id: CartItem["id"]) => void;
+  addItem: (product: Product) => void;
+  increment: (id: CartItem["id"]) => void;
+  decrement: (id: CartItem["id"]) => void;
+  removeItem: (id: CartItem["id"]) => void;
+  clearCart: () => void;
 }
 
 interface CartItem {
   id: Product["id"];
   title: Product["title"];
+  price: Product["price"];
   quantity: number;
-  getPrice: () => number;
-  increment: () => void;
-  decrement: () => void;
 }

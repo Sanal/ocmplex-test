@@ -1,11 +1,10 @@
 import { Suspense } from "react";
 import { ReviewCard } from "@/components/review-card";
+import { REVIEWS_URL } from "@/constants";
 import styles from "./reviews.module.scss";
 
 async function fetchReviews(): Promise<Review[]> {
-  const res = await fetch("http://o-complex.com:1337/reviews", {
-    cache: "no-store",
-  });
+  const res = await fetch(REVIEWS_URL, { cache: "no-store" });
 
   if (!res.ok) throw new Error("Не удалось загрузить отзывы");
   return res.json();

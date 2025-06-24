@@ -1,0 +1,16 @@
+.itemsList {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 1rem 0;
+  list-style: none;
+}
+
+.emptyItemsList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  text-align: center;
+  color: #888888;
+}

@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/utils";
 import styles from "./cart-item.module.scss";
 
 type Props = {
@@ -5,12 +6,14 @@ type Props = {
 };
 
 export function CartItem({ item }: Props) {
-  const { title, quantity, getPrice } = item;
+  const { title, quantity, price } = item;
+  const formattedPrice = formatCurrency(price * quantity);
+
   return (
     <div className={styles.container}>
       <span>{title}</span>
       <span>x{quantity}</span>
-      <span>{getPrice()}₽</span>
+      <span>{formattedPrice}</span>
     </div>
   );
 }

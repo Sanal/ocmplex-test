@@ -1,0 +1,9 @@
+.cartForm {
+  display: grid;
+  gap: 0.5rem;
+
+  @media (min-width: 512px) {
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+  }
+}

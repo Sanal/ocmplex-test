@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <h1 className="visually-hidden">Магазин</h1>
       <Reviews />
-      <Cart items={[]} />
+      <Cart />
       <Products />
     </main>
   );
